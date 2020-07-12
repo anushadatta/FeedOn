@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>FeedOn</title>
+
+    <!-- Favicon, CSS & JS -->
+    <link rel="icon" href="assets/logo.png" type="image/png" sizes="16x16">
+    <link rel="stylesheet" href="styles.css">
+    <script src="client.js" defer></script>
+
+    <!-- Font Awesome icons CDN -->
+    <script src="https://use.fontawesome.com/4e51920be5.js"></script>
+
+</head>
+
+<body>
+
+    <!-- Navbar -->
+    <div id="navbar" class="navbar">
+        <ul>
+            <li>
+                <a href="#contact">CONTACT</a>
+            </li>
+            <li>
+                <a href="">SIGN IN</a>
+            </li>
+            <li>
+                <a href="">SIGN UP</a>
+            </li>
+            <li>
+                <a href="#home">HOME</a>
+            </li>
+            <img src="assets/logo.png" class="navbar-logo">
+        </ul>
+    </div>
+
+    <!-- Heading -->
+    <header class="showcase">
+        <div class="content">
+            <img src="assets/FeedOn.png" class="logo" alt="FeedOn">
+        </div>
+    </header>
+
+    <!-- Tabs: Feed, Charities, Restaurants -->
+    <section id="home" class="bg-light">
+        <div class="container center tab">
+            <button onclick="listAllFeeds()" class="button-primary">Feed</button>
+            <button onclick="listAllCharities()" class="button-primary">Charities</button>
+            <button onclick="listAllRestaurants()" class="button-primary">Restaurants</button>
+        </div>
+
+        <div class="data container"></div>
+
+        <hr class="center">
+
+    </section>
+
+    <!-- Contact Details -->
+    <section class="bg-light" id="contact">
+
+        <div class="container center">
+
+            <a href="mailto:contact@feedon.com"><i class="fa fa-envelope"></i></a>
+
+            <a href="https://www.linkedin.com" target="_blank"><i class="fa fa-linkedin"></i></a>
+
+            <a href="https://medium.com" target="_blank"><i class="fa fa-medium"></i></a>
+
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="center bg-dark">
+        <p>FeedOn &copy; 2020</p>
+    </footer>
+
+    <script src="client.js"></script>
+</body>
+
+</html>
