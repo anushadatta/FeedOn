@@ -1,0 +1,49 @@
+/* Make Donation button */
+.form-container {
+    margin: auto;
+    max-width: 1000px;
+    padding: 15px;
+    background-color: #f1f1f1;
+}
+
+.form-container h2 {
+    margin: 10px;
+}
+
+/* Full-width input fields */
+.form-container input {
+    width: 100%;
+    padding: 15px;
+    margin: 5px 0 22px 0;
+    border: none;
+    background: #f1f1f1;
+}
+
+/* When the form inputs are in focus */
+.form-container input:focus {
+    background-color: #ddd;
+    outline: none;
+}
+
+/* Submit donation button */
+.form-container .btn {
+    background-color: #4CAF50;
+    color: white;
+    padding: 16px 20px;
+    border: none;
+    cursor: pointer;
+    width: 100%;
+    margin-bottom: 10px;
+    opacity: 0.8;
+}
+
+/* Cancel button */
+.form-container .cancel {
+    background-color: #333;
+}
+
+/* Hover effects */
+.form-container .btn:hover,
+.open-button:hover {
+    opacity: 1;
+}
