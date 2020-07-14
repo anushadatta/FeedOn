@@ -19,6 +19,10 @@ import javax.servlet.http.HttpServletResponse;
 @WebServlet("/restaurants")
 public class RestaurantsPageServlet extends HttpServlet {
 
+    private static final String JSON_CONTENT_TYPE = "application/json";
+    private Gson gson = new Gson();
+    DatastoreService datastore = DatastoreServiceFactory.getDatastoreService();
+
     @Override
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
         Query queryRestaurant = new Query("Restaurant");
@@ -35,8 +39,23 @@ public class RestaurantsPageServlet extends HttpServlet {
             restaurants.add(restaurant);
         }
 
-        Gson gson = new Gson();
-        response.setContentType("application/json;");
+        response.setContentType(JSON_CONTENT_TYPE);
         response.getWriter().println(gson.toJson(restaurants));
+    }
+
+    @Override
+    public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
+        // Get the input from the form.
+        String name = request.getParameter("name");
+        String location = request.getParameter("location");
+        String description = request.getParameter("description");
+
+        Entity restaurantEntity = new Entity("Restaurant");
+        restaurantEntity.setProperty("name", name);
+        restaurantEntity.setProperty("location", location);
+        restaurantEntity.setProperty("description", description);
+
+        datastore.put(restaurantEntity);
+        response.sendRedirect("/index.html");
     }
 }

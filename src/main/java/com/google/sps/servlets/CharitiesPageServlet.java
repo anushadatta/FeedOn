@@ -21,6 +21,7 @@ public class CharitiesPageServlet extends HttpServlet {
 
     private static final String JSON_CONTENT_TYPE = "application/json";
     private Gson gson = new Gson();
+    DatastoreService datastore = DatastoreServiceFactory.getDatastoreService();
 
     @Override
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
@@ -40,5 +41,21 @@ public class CharitiesPageServlet extends HttpServlet {
 
         response.setContentType(JSON_CONTENT_TYPE);
         response.getWriter().println(gson.toJson(charities));
+    }
+
+    @Override
+    public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
+        // Get the input from the form.
+        String name = request.getParameter("name");
+        String location = request.getParameter("location");
+        String description = request.getParameter("description");
+
+        Entity charityEntity = new Entity("Charity");
+        charityEntity.setProperty("name", name);
+        charityEntity.setProperty("location", location);
+        charityEntity.setProperty("description", description);
+
+        datastore.put(charityEntity);
+        response.sendRedirect("/index.html");
     }
 }
