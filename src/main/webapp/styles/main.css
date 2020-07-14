@@ -124,10 +124,11 @@
     opacity: 0.9;
     position: fixed;
     bottom: 23px;
+    right: 28px;
     width: 180px;
     text-decoration: none;
     /* Change to alter horizonal position of button */
-    right: 220px;
+    /*right: 220px; */
 }
 
 .inbox-btn:hover {

@@ -227,25 +227,32 @@ function getRegister() {
 function controlButton() {
     // remove sign in and register button if user is already signin;
     fetch('/login').then(response => response.json()).then((loginInfo) => {
+        var inboxButton = document.getElementById("inbox-button");
+        var donateButton = document.getElementById("donation-button");
         if (loginInfo.length == 1) {
             // user is not sign in
+            inboxButton.parentNode.removeChild(inboxButton);
+            donateButton.parentNode.removeChild(donateButton);
             return;
         }
         var userEmail = loginInfo[0];
         var registerButton = document.getElementById("register-button");
         var signInButton = document.getElementById("sign-in-button");
-        registerButton.innerHtml = userEmail;
+        //var userInfo = document.createElement("p");
+        //userInfo.appendChild(document.createTextNode(userEmail));
         signInButton.parentNode.removeChild(signInButton);
+        //registerButton.parentNode.replaceChild(userInfo, registerButton);
+        //registerButton.innerHTML.replace(userEmail);
+        registerButton.innerHTML = userEmail;
 
         if (loginInfo.length == 3) {
             // the user-type is known
             const restaurantType = "restaurant";
             const charityType = "charity";
-            if (loginInfo[3] == restaurantType) {
-                var inboxButton = document.getElementById("inbox-button");
+            console.log(loginInfo[2]);
+            if (loginInfo[2] == restaurantType) {
                 inboxButton.parentNode.removeChild(inboxButton);
-            } else if (loginInfo[3] == charityType) {
-                var donateButton = document.getElementById("donate-button");
+            } else if (loginInfo[2] == charityType) {
                 donateButton.parentNode.removeChild(donateButton);
             }
         }
