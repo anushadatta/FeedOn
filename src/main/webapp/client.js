@@ -1,7 +1,4 @@
-const loadingElement = document.querySelector(".loading");
 const dataElement = document.querySelector(".data");
-
-loadingElement.style.display = "none";
 
 function listAllFeeds() {
   getFeeds().then((feeds) => {
@@ -20,7 +17,6 @@ function listAllFeeds() {
 
       dataElement.appendChild(div);
     });
-    loadingElement.style.display = "none";
   });
 }
 
@@ -45,7 +41,6 @@ function listAllCharities() {
 
       dataElement.appendChild(div);
     });
-    loadingElement.style.display = "none";
   });
 }
 
@@ -70,12 +65,11 @@ function listAllRestaurants() {
 
       dataElement.appendChild(div);
     });
-    loadingElement.style.display = "none";
   });
 }
 
 /*
-Mock API calls
+Real API calls
 */
 
 function getFeeds() {
@@ -114,53 +108,17 @@ function getFeeds() {
 }
 
 function getCharities() {
-  const charities = [
-    {
-      name: "GiveDirectly",
-      description:
-        "GiveDirectly is the first — and largest — nonprofit that lets donors like you send food directly to the world’s poorest. We believe people living in poverty deserve the dignity to choose for themselves how best to improve their lives.",
-      address: "Kent Ridge | Singapore",
-    },
-    {
-      name: "GiveDirectly",
-      description:
-        "GiveDirectly is the first — and largest — nonprofit that lets donors like you send food directly to the world’s poorest. We believe people living in poverty deserve the dignity to choose for themselves how best to improve their lives.",
-      address: "Kent Ridge | Singapore",
-    },
-    {
-      name: "GiveDirectly",
-      description:
-        "GiveDirectly is the first — and largest — nonprofit that lets donors like you send food directly to the world’s poorest. We believe people living in poverty deserve the dignity to choose for themselves how best to improve their lives.",
-      address: "Kent Ridge | Singapore",
-    },
-  ];
-
-  // Using Promise here to mimick API response from the backend
-  return Promise.resolve(charities);
+  return fetch("/charities")
+    .then((response) => response.json())
+    .then((entries) => {
+      return entries;
+    });
 }
 
 function getRestaurants() {
-  const restaurants = [
-    {
-      name: "Burger King",
-      description:
-        "Enjoy the best-selling, signature flame-grilled WHOPPER® sandwich as well as other top BK favourites such as the velvety smooth Double Mushroom Swiss, hot and crispy Tendercrisp Chicken, irresistible sides such as Onion Rings, HERSHEY’S® Sundae Pie and more!",
-      address: "Fast Food | VivoCity #02-80",
-    },
-    {
-      name: "Burger King",
-      description:
-        "Enjoy the best-selling, signature flame-grilled WHOPPER® sandwich as well as other top BK favourites such as the velvety smooth Double Mushroom Swiss, hot and crispy Tendercrisp Chicken, irresistible sides such as Onion Rings, HERSHEY’S® Sundae Pie and more!",
-      address: "Fast Food | VivoCity #02-80",
-    },
-    {
-      name: "Burger King",
-      description:
-        "Enjoy the best-selling, signature flame-grilled WHOPPER® sandwich as well as other top BK favourites such as the velvety smooth Double Mushroom Swiss, hot and crispy Tendercrisp Chicken, irresistible sides such as Onion Rings, HERSHEY’S® Sundae Pie and more!",
-      address: "Fast Food | VivoCity #02-80",
-    },
-  ];
-
-  // Using Promise here to mimick API response from the backend
-  return Promise.resolve(restaurants);
+  return fetch("/restaurants")
+    .then((response) => response.json())
+    .then((entries) => {
+      return entries;
+    });
 }
