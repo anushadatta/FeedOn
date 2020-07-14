@@ -55,12 +55,19 @@ public class LoginServlet extends HttpServlet {
   @Override
   public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
     System.out.println("post method called");
+    String name = request.getParameter("name-input");
     String userType = request.getParameter("user-type");
+    String description = request.getParameter("description-input");
+    String locationAddress = request.getParameter("address-input");
     UserService userService = UserServiceFactory.getUserService();
     String userEmail = userService.getCurrentUser().getEmail();
+
     Entity userEntity = new Entity("user");
     userEntity.setProperty("email-address", userEmail);
+    userEntity.setProperty("name", name);
     userEntity.setProperty("user-type", userType);
+    userEntity.setProperty("location address", locationAddress);
+    userEntity.setProperty("description", description);
     DatastoreService datastore = DatastoreServiceFactory.getDatastoreService();
     datastore.put(userEntity);
     response.sendRedirect("index.html");
