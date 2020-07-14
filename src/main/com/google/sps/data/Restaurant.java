@@ -1,4 +1,4 @@
-package main.java.com.google.sps.data;
+package com.google.sps.data;
 
 public final class Restaurant {
     private final String name;
