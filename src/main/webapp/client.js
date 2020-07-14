@@ -25,6 +25,7 @@ function listAllCharities() {
     dataElement.innerHTML = "";
     charities.forEach((charity) => {
       const div = document.createElement("div");
+      div.className = "card";
 
       const header = document.createElement("h3");
       header.textContent = charity.name;
@@ -32,12 +33,12 @@ function listAllCharities() {
       const contents = document.createElement("p");
       contents.textContent = charity.description;
 
-      const address = document.createElement("p");
-      address.textContent = charity.address;
+      const location = document.createElement("p");
+      location.textContent = charity.location;
 
       div.appendChild(header);
       div.appendChild(contents);
-      div.appendChild(address);
+      div.appendChild(location);
 
       dataElement.appendChild(div);
     });
@@ -49,6 +50,7 @@ function listAllRestaurants() {
     dataElement.innerHTML = "";
     restaurants.forEach((restaurant) => {
       const div = document.createElement("div");
+      div.className = "card";
 
       const header = document.createElement("h3");
       header.textContent = restaurant.name;
@@ -56,12 +58,12 @@ function listAllRestaurants() {
       const contents = document.createElement("p");
       contents.textContent = restaurant.description;
 
-      const address = document.createElement("p");
-      address.textContent = restaurant.address;
+      const location = document.createElement("p");
+      location.textContent = restaurant.location;
 
       div.appendChild(header);
       div.appendChild(contents);
-      div.appendChild(address);
+      div.appendChild(location);
 
       dataElement.appendChild(div);
     });
