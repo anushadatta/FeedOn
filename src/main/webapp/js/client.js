@@ -223,3 +223,31 @@ function getRegister() {
     }
   })
 }
+
+function controlButton() {
+    // remove sign in and register button if user is already signin;
+    fetch('/login').then(response => response.json()).then((loginInfo) => {
+        if (loginInfo.length == 1) {
+            // user is not sign in
+            return;
+        }
+        var userEmail = loginInfo[0];
+        var registerButton = document.getElementById("register-button");
+        var signInButton = document.getElementById("sign-in-button");
+        registerButton.innerHtml = userEmail;
+        signInButton.parentNode.removeChild(signInButton);
+
+        if (loginInfo.length == 3) {
+            // the user-type is known
+            const restaurantType = "restaurant";
+            const charityType = "charity";
+            if (loginInfo[3] == restaurantType) {
+                var inboxButton = document.getElementById("inbox-button");
+                inboxButton.parentNode.removeChild(inboxButton);
+            } else if (loginInfo[3] == charityType) {
+                var donateButton = document.getElementById("donate-button");
+                donateButton.parentNode.removeChild(donateButton);
+            }
+        }
+    })
+}
