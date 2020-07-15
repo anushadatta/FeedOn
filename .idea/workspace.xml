@@ -1,50 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="71b404ba-dc26-427a-9297-5f2e2e60ba07" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/target/FeedOn-1.0-SNAPSHOT/WEB-INF/classes/com/googlesps/feedon/data/Charity.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/FeedOn-1.0-SNAPSHOT/WEB-INF/classes/com/googlesps/feedon/data/Donation.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/FeedOn-1.0-SNAPSHOT/WEB-INF/classes/com/googlesps/feedon/data/DonationMatch.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/FeedOn-1.0-SNAPSHOT/WEB-INF/classes/com/googlesps/feedon/data/Restaurant.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/FeedOn-1.0-SNAPSHOT/WEB-INF/classes/com/googlesps/feedon/servlets/AddDataServlet.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/FeedOn-1.0-SNAPSHOT/WEB-INF/classes/com/googlesps/feedon/servlets/AddDonationMatchServlet.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/FeedOn-1.0-SNAPSHOT/WEB-INF/classes/com/googlesps/feedon/servlets/BlobstoreUploadURLServlet.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/FeedOn-1.0-SNAPSHOT/WEB-INF/classes/com/googlesps/feedon/servlets/DeleteDonationServlet.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/FeedOn-1.0-SNAPSHOT/WEB-INF/classes/com/googlesps/feedon/servlets/DonationOfferServlet.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/FeedOn-1.0-SNAPSHOT/WEB-INF/classes/com/googlesps/feedon/servlets/InboxServlet.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/FeedOn-1.0-SNAPSHOT/WEB-INF/classes/com/googlesps/feedon/servlets/LoginServlet.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/FeedOn-1.0-SNAPSHOT/WEB-INF/classes/com/googlesps/feedon/servlets/MatchPageServlet.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/FeedOn-1.0-SNAPSHOT/donation.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/FeedOn-1.0-SNAPSHOT/inbox.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/FeedOn-1.0-SNAPSHOT/js/client.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/FeedOn-1.0-SNAPSHOT/register.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/FeedOn-1.0-SNAPSHOT/signin.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/FeedOn-1.0-SNAPSHOT/styles/common.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/FeedOn-1.0-SNAPSHOT/styles/donation-form.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/FeedOn-1.0-SNAPSHOT/styles/inbox.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/googlesps/feedon/data/Charity.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/googlesps/feedon/data/Donation.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/googlesps/feedon/data/DonationMatch.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/googlesps/feedon/data/Restaurant.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/googlesps/feedon/servlets/AddDataServlet.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/googlesps/feedon/servlets/AddDonationMatchServlet.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/googlesps/feedon/servlets/BlobstoreUploadURLServlet.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/googlesps/feedon/servlets/DeleteDonationServlet.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/googlesps/feedon/servlets/DonationOfferServlet.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/googlesps/feedon/servlets/InboxServlet.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/googlesps/feedon/servlets/LoginServlet.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/googlesps/feedon/servlets/MatchPageServlet.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/styles/main.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/styles/main.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/FeedOn-1.0-SNAPSHOT.war" beforeDir="false" afterPath="$PROJECT_DIR$/target/FeedOn-1.0-SNAPSHOT.war" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/FeedOn-1.0-SNAPSHOT/WEB-INF/appengine-generated/datastore-indexes-auto.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/FeedOn-1.0-SNAPSHOT/WEB-INF/appengine-generated/datastore-indexes-auto.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/FeedOn-1.0-SNAPSHOT/WEB-INF/appengine-generated/local_db.bin" beforeDir="false" afterPath="$PROJECT_DIR$/target/FeedOn-1.0-SNAPSHOT/WEB-INF/appengine-generated/local_db.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/FeedOn-1.0-SNAPSHOT/client.js" beforeDir="false" afterPath="$PROJECT_DIR$/target/FeedOn-1.0-SNAPSHOT/client.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/FeedOn-1.0-SNAPSHOT/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/FeedOn-1.0-SNAPSHOT/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/FeedOn-1.0-SNAPSHOT/styles.css" beforeDir="false" afterPath="$PROJECT_DIR$/target/FeedOn-1.0-SNAPSHOT/styles/main.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/maven-archiver/pom.properties" beforeDir="false" afterPath="$PROJECT_DIR$/target/maven-archiver/pom.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" afterDir="false" />
-    </list>
+    <list default="true" id="71b404ba-dc26-427a-9297-5f2e2e60ba07" name="Default Changelist" comment="" />
     <ignored path="$PROJECT_DIR$/target/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -138,7 +95,7 @@
     </panes>
   </component>
   <component name="PropertiesComponent">
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1594846907580" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1594847052648" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="project.structure.last.edited" value="Libraries" />
     <property name="project.structure.proportion" value="0.15" />
