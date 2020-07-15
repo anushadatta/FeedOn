@@ -155,3 +155,17 @@ function getRestaurants() {
     // Using Promise here to mimick API response from the backend
     return Promise.resolve(restaurants);
 }
+
+// DONATION FORM 
+
+// Fetches Blobstore URL for form action to faciliate upload of images 
+function getBlobstoreURL() {
+    fetch('/blobstore-upload-url')
+      .then((response) => {
+        return response.text();
+      })
+      .then((imageUploadUrl) => {
+        const commentForm = document.getElementById('donation-form');
+        commentForm.action = imageUploadUrl;
+      });
+}
