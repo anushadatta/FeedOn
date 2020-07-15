@@ -34,7 +34,7 @@ public class DonationOfferServlet extends HttpServlet {
     @Override
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
         
-        // Write code here to query all donation offers from Datastore "Donation" entity 
+        // TODO: Write code here to query all donation offers from Datastore "Donation" entity 
 
     }
 
@@ -71,7 +71,8 @@ public class DonationOfferServlet extends HttpServlet {
     }
 
     /** Returns a URL that points to the uploaded file, or null if the user didn't upload a file. */
-  @Nullable private String getUploadedFileUrl(HttpServletRequest request, String formInputElementName) {
+  @Nullable 
+  private String getUploadedFileUrl(HttpServletRequest request, String formInputElementName) {
     BlobstoreService blobstoreService = BlobstoreServiceFactory.getBlobstoreService();
     Map<String, List<BlobKey>> blobs = blobstoreService.getUploads(request);
     List<BlobKey> blobKeys = blobs.get("image");
