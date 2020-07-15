@@ -27,7 +27,7 @@
                 <a href="#contact">CONTACT</a>
             </li>
             <li>
-                <a href="">SIGN IN</a>
+                <a href="inbox">SIGN IN</a>
             </li>
             <li>
                 <a href="">SIGN UP</a>
@@ -49,9 +49,16 @@
     <!-- Tabs: Feed, Charities, Restaurants -->
     <section id="home" class="bg-light">
         <div class="container center tab">
-            <button onclick="listAllFeeds()" class="button-primary">Feed</button>
+            <body onload="getFeeds()">
+            <button onclick="listAllFeeds()" class="button-primary" id="feeds">Feed</button>
             <button onclick="listAllCharities()" class="button-primary">Charities</button>
             <button onclick="listAllRestaurants()" class="button-primary">Restaurants</button>
+            <form method="POST" action="/new-data">
+                <input type="text" name="title" />
+                <br/>
+                <button>Submit</button>
+            </form>
+            </body>
         </div>
 
         <div class="data container"></div>

@@ -1,0 +1,61 @@
+/* Overriding default styles */
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    background: #333;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* Helper styles */
+.card {
+    color: black;
+    border-radius: 10px;
+    background: white;
+    padding: 10px 30px 20px;
+    margin-bottom: 20px;
+}
+
+.container {
+    max-width: 960px;
+    margin: auto;
+    overflow: hidden;
+    padding: 4rem 1rem;
+}
+
+.grid-3 {
+    display: grid;
+    grid-gap: 20px;
+    grid-template-columns: repeat(3, 1fr);
+}
+
+.grid-2 {
+    display: grid;
+    grid-gap: 20px;
+    grid-template-columns: repeat(2, 1fr);
+}
+
+.center {
+    text-align: center;
+    margin: auto;
+}
+
+.bg-light {
+    background: #f4f4f4;
+    color: #333;
+}
+
+.bg-dark {
+    background: #333;
+    color: #f4f4f4;
+}
+
+/* Horizontal Rule */
+hr {
+    width: 70%;
+    text-align-last: center;
+    border: 1.5px solid #c0c0c0;
+}
+

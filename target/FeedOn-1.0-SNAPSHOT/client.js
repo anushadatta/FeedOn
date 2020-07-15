@@ -3,6 +3,54 @@ const dataElement = document.querySelector(".data");
 
 loadingElement.style.display = "none";
 
+function getFeeds() {
+    const feedsDiv = document.getElementById("feeds");
+    fetch('/load-feeds')
+        .then(response => response.json())
+        .then(feedsList => {
+            console.log(feedsList);
+            if(feedsList.length == 0) {
+                var noFeeds = document.createElement("p");
+                noFeeds.innerText = "There is none. Please come back later.";
+                feedsDiv.appendChild(noFeeds);
+            } else {
+                for (let i = 0; i < feedsList.length; i++) {
+                    feedsDiv.appendChild(createFeedElement(feedsList[i]));
+                }
+            }
+        })
+        .catch(error => console.log(error));
+}
+
+function createFeedElement(input) {
+    console.log(input. + input.postDate);
+
+    // To prevent HTML and Script injections
+    var feedText = input.text;
+    var feedText = input..replace(/</g, "&lt;").replace(/>/g, "&gt;");
+
+    var commentHTML = `
+    <div class="text">${commentText}</div>
+    <div class="date">${input.postDate}</div>
+    `;
+
+    var comment = document.createElement("div");
+    comment.classList.add("comment-card");
+    comment.innerHTML = commentHTML;
+
+    return comment;
+}
+
+
+
+function getComments() {
+  fetch("/data").then((response) => response.json())
+    .then((comments) => {
+      document.getElementById("notes-container").innerHTML = `${comments
+        .map((comment) => `<p>${comment}</p>`)
+        .join("")}`;
+    });
+}
 function listAllFeeds() {
   getFeeds().then((feeds) => {
     dataElement.innerHTML = "";
@@ -71,6 +119,12 @@ function listAllRestaurants() {
       dataElement.appendChild(div);
     });
     loadingElement.style.display = "none";
+  });
+}
+
+function getInbox() {
+  fetch('/inbox').then(response => response.json()).then((inbox) => {
+    document.getElementById('inbox').innerText = inbox;
   });
 }
 
