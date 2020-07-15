@@ -1,0 +1,12 @@
+com/googlesps/feedon/servlets/DonationOfferServlet.class
+com/googlesps/feedon/data/Restaurant.class
+com/googlesps/feedon/servlets/DeleteDonationServlet.class
+com/googlesps/feedon/servlets/MatchPageServlet.class
+com/googlesps/feedon/data/Charity.class
+com/googlesps/feedon/servlets/AddDonationMatchServlet.class
+com/googlesps/feedon/servlets/InboxServlet.class
+com/googlesps/feedon/servlets/BlobstoreUploadURLServlet.class
+com/googlesps/feedon/data/Donation.class
+com/googlesps/feedon/servlets/AddDataServlet.class
+com/googlesps/feedon/servlets/LoginServlet.class
+com/googlesps/feedon/data/DonationMatch.class

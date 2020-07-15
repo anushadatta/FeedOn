@@ -1,0 +1,37 @@
+<DOCTYPE html>
+    <html>
+
+    <head>
+        <meta charset="UTF-8">
+        <title>FeedOn's Register Page</title>
+        <script src="js/client.js"></script>
+    </head>
+
+    <body onload=getRegister()>
+        <H1>Register page</H1>
+        <div id="user-info"></div>
+        <form action="/login" method="POST">
+            <p>Please enter your name.</p>
+            <input type="text" name="name-input" placeholder="Charity/Restaurant's name" />
+            <br /><br>
+            <p>Please register as charity or restaurant.</p>
+            <select name="user-type">
+                <option value="charity">Charity</option>
+                <option value="restaurant">Restaurant</option>
+            </select>
+            <br/><br>
+            <p>Please give a description about your charity/restaurant.</p>
+            <textarea name="description-input" placeholder="Your description">
+            </textarea>
+            <br/><br>
+            <p>Pleace provide an address to your location.</p>
+            <textarea name="address-input" placeholder="Your location's address">
+            </textarea>
+            <br/><br>
+            <input type="submit" value="Enter">
+        </form>
+
+    </body>
+
+    </html>
+</DOCTYPE>

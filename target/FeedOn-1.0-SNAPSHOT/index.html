@@ -10,8 +10,9 @@
 
     <!-- Favicon, CSS & JS -->
     <link rel="icon" href="assets/logo.png" type="image/png" sizes="16x16">
-    <link rel="stylesheet" href="styles.css">
-    <script src="client.js" defer></script>
+    <link rel="stylesheet" href="styles/common.css">
+    <link rel="stylesheet" href="styles/main.css">
+    <script src="js/client.js" defer></script>
 
     <!-- Font Awesome icons CDN -->
     <script src="https://use.fontawesome.com/4e51920be5.js"></script>
@@ -24,13 +25,13 @@
     <div id="navbar" class="navbar">
         <ul>
             <li>
-                <a href="#contact">CONTACT</a>
-            </li>
-            <li>
                 <a href="">SIGN IN</a>
             </li>
             <li>
                 <a href="">SIGN UP</a>
+            </li>
+            <li>
+                <a href="#contact">CONTACT</a>
             </li>
             <li>
                 <a href="#home">HOME</a>
@@ -46,10 +47,23 @@
         </div>
     </header>
 
+    <!-- Donation Form -->
+    <a href="donation.html" class="donation-btn center" target="_blank">MAKE DONATION</a>
+
+    <!-- Donation Inbox -->
+    <a href="inbox.html" class="inbox-btn center" target="_blank">
+        INBOX
+        <span class="badge">
+            <script type="text/javascript">
+                return 3;
+            </script>
+        </span>
+    </a>
+
     <!-- Tabs: Feed, Charities, Restaurants -->
     <section id="home" class="bg-light">
         <div class="container center tab">
-            <button onclick="listAllFeeds()" class="button-primary">Feed</button>
+            <button onclick="listAllMatches()" class="button-primary">Donation Match</button>
             <button onclick="listAllCharities()" class="button-primary">Charities</button>
             <button onclick="listAllRestaurants()" class="button-primary">Restaurants</button>
         </div>
@@ -62,14 +76,18 @@
 
     <!-- Contact Details -->
     <section class="bg-light" id="contact">
-
         <div class="container center">
+
+            <h2>Get in Touch</h2>
+            <p>To find out more, just drop us a line!</p>
+
+            <a href="tel:+65-9126-2826"><i class="fa fa-phone"></i></a>
+
+            <a href="" target="_blank"><i class="fa fa-map-marker"></i></a>
 
             <a href="mailto:contact@feedon.com"><i class="fa fa-envelope"></i></a>
 
             <a href="https://www.linkedin.com" target="_blank"><i class="fa fa-linkedin"></i></a>
-
-            <a href="https://medium.com" target="_blank"><i class="fa fa-medium"></i></a>
 
         </div>
     </section>
@@ -79,7 +97,5 @@
         <p>FeedOn &copy; 2020</p>
     </footer>
 
-    <script src="client.js"></script>
 </body>
-
 </html>
