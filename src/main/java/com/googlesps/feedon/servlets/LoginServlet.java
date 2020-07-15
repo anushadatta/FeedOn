@@ -107,7 +107,7 @@ public class LoginServlet extends HttpServlet {
     }
     // this email address is not found in the database
     System.out.println("userType of " + email + " not found");
-    return "";
+    return ""; // return empty string if user is not found
   }
 
   /**
