@@ -1,3 +1,2 @@
-  
-# ignore build artifacts in target/ directory
+  # ignore build artifacts in target/ directory
 target/
