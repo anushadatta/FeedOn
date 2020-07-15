@@ -21,6 +21,22 @@ import javax.servlet.http.HttpServletResponse;
 @WebServlet("/login")
 public class LoginServlet extends HttpServlet {
 
+  /**
+   * response will contain a json with different number of elements
+   * depending on the user's state. If the user is
+   * 1) Not logged in -
+   *    - Return one element, containing the url for logging in using google's
+   *      api
+   * 2) Logged in but not registered -
+   *    - Return two elements. The first element contains the user's email
+   *      address. Second element contains the url for logging out
+   * 3) Logged in and registered -
+   *    - Return three elements
+   *    - First element is the user's email address
+   *    - Second element is the url for logging out
+   *    - Third element is the user's type, either a "charity" or 
+   *    - "restaurant" string
+   */
   @Override
   public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
     System.out.println("get method called");
@@ -42,8 +58,6 @@ public class LoginServlet extends HttpServlet {
     } else { // not yet signed in
       String urlToRedirectToAfterUserLogsIn = "/signin.html";
       String loginUrl = userService.createLoginURL(urlToRedirectToAfterUserLogsIn);
-      //somewhere over here need to know if this is for charity / restaurant
-      // how to know?
       DatastoreService datastore = DatastoreServiceFactory.getDatastoreService();
       result.add(loginUrl);
     }
@@ -51,7 +65,9 @@ public class LoginServlet extends HttpServlet {
     response.getWriter().println(json);
   }
 
-
+  /**
+   * Used by user's registration form. Refer to register.html
+   */
   @Override
   public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
     System.out.println("post method called");
@@ -74,7 +90,9 @@ public class LoginServlet extends HttpServlet {
   }
 
   /**
-   * TODO: Quick hack method, improve later on
+   * Returns an empty string is the user is not registered, that is not 
+   * found in the datastore. Otherwise returns either type stored in the
+   * datastore, which is either "restaurant" or "charity"
    */
   private String getUserType(String email) {
     Filter propertyFilter =
@@ -93,7 +111,8 @@ public class LoginServlet extends HttpServlet {
   }
 
   /**
-   * TODO: quick hack method, improve later on
+   * Return whether this email address is already registered, i.e.
+   * in the datastore with "User" entity. 
    */
   private boolean hasRegistered(String email) {
     if (getUserType(email).equals("")) {

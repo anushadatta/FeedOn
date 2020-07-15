@@ -227,9 +227,14 @@ function getRegister() {
 function controlButton() {
     // remove sign in and register button if user is already signin;
     fetch('/login').then(response => response.json()).then((loginInfo) => {
+        // loginInfo has different length base on user's state
+        // it has length of 1 if user is not logged in, 2 if user is logged
+        // in but not registered, and 3 if user is logged in and registered
+        var notLoggedIn = 1;
+        var loggedInAndRegistered = 3;
         var inboxButton = document.getElementById("inbox-button");
         var donateButton = document.getElementById("donation-button");
-        if (loginInfo.length == 1) {
+        if (loginInfo.length == notLoggedIn) {
             // user is not sign in
             inboxButton.parentNode.removeChild(inboxButton);
             donateButton.parentNode.removeChild(donateButton);
@@ -245,7 +250,7 @@ function controlButton() {
         //registerButton.innerHTML.replace(userEmail);
         registerButton.innerHTML = userEmail;
 
-        if (loginInfo.length == 3) {
+        if (loginInfo.length == loggedInAndRegistered) {
             // the user-type is known
             const restaurantType = "restaurant";
             const charityType = "charity";
