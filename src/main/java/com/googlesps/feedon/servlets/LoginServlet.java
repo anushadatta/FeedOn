@@ -74,7 +74,7 @@ public class LoginServlet extends HttpServlet {
     String name = request.getParameter("name-input");
     String userType = request.getParameter("user-type");
     String description = request.getParameter("description-input");
-    String locationAddress = request.getParameter("address-input");
+    String location = request.getParameter("location-input");
     UserService userService = UserServiceFactory.getUserService();
     String userEmail = userService.getCurrentUser().getEmail();
 
@@ -82,7 +82,7 @@ public class LoginServlet extends HttpServlet {
     userEntity.setProperty("email-address", userEmail);
     userEntity.setProperty("name", name);
     userEntity.setProperty("user-type", userType);
-    userEntity.setProperty("location address", locationAddress);
+    userEntity.setProperty("location", location);
     userEntity.setProperty("description", description);
     DatastoreService datastore = DatastoreServiceFactory.getDatastoreService();
     datastore.put(userEntity);
