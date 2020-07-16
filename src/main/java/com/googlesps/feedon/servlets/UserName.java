@@ -40,6 +40,11 @@ public class UserName extends HttpServlet {
     response.getWriter().println(name);
   }
 
+  /**
+  Get the user's name base on email address
+  Returns empty string if user is not registered yet, that is the email
+  address is not found in the datastore. Otherwise, return the user's name
+   */
   private String getUserName(String email) {
     Filter propertyFilter = new FilterPredicate(
       "email-address", FilterOperator.EQUAL, email);
