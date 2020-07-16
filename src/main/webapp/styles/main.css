@@ -115,7 +115,7 @@
 
 /* Inbox Button */
 .inbox-btn {
-    background-color: #333;
+    background-color: #2283E4;
     color: white;
     padding: 16px 20px;
     border: none;
@@ -127,7 +127,7 @@
     width: 180px;
     text-decoration: none;
     /* Change to alter horizonal position of button */
-    right: 220px;
+    right: 28px;
 }
 
 .inbox-btn:hover {

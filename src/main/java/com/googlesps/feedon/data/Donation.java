@@ -1,4 +1,4 @@
-package com.googlesps.data;
+package com.googlesps.feedon.data;
 
 import java.util.Date;
 import javax.annotation.Nullable;
@@ -22,7 +22,7 @@ public final class Donation {
         String location, 
         String category, 
         String pickUpTime, 
-        String quantity, 
+        String quantity,
         String specialInstructions,
         String imageURL, 
         Date timestamp) {

@@ -1,5 +1,5 @@
 h1 {
-    padding: 20px;
+    padding: 30px;
 }
 
 /* Accept button */
@@ -29,5 +29,22 @@ h1 {
 /* Hover effects */
 .accept-btn:hover,
 .decline-btn:hover {
+    opacity: 1;
+}
+
+/* Inbox button */
+.inbox-btn {
+    background-color: white;
+    color: black;
+    padding: 16px 20px;
+    border: none;
+    border-radius: 1vh;
+    cursor: pointer;
+    opacity: 0.9;
+    left: 50%;
+    text-align: center;
+}
+
+.inbox-btn:hover {
     opacity: 1;
 }

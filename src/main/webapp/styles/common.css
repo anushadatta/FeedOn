@@ -10,6 +10,14 @@ body {
 }
 
 /* Helper styles */
+.card {
+    color: black;
+    border-radius: 10px;
+    background: white;
+    padding: 10px 30px 20px;
+    margin-bottom: 20px;
+}
+
 .container {
     max-width: 960px;
     margin: auto;
@@ -50,3 +58,4 @@ hr {
     text-align-last: center;
     border: 1.5px solid #c0c0c0;
 }
+

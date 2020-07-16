@@ -19,16 +19,16 @@
 
 </head>
 
-<body>
+<body onload=controlButton()>
 
     <!-- Navbar -->
     <div id="navbar" class="navbar">
         <ul>
             <li>
-                <a href="">SIGN IN</a>
+                <a href="signin.html" id=sign-in-button>SIGN IN</a>
             </li>
             <li>
-                <a href="">SIGN UP</a>
+                <a href="register.html" id=register-button>REGISTER</a>
             </li>
             <li>
                 <a href="#contact">CONTACT</a>
@@ -48,18 +48,19 @@
     </header>
 
     <!-- Donation Form -->
-    <a href="donation.html" class="donation-btn center" target="_blank">MAKE DONATION</a>
+    <a href="donation.html" class="donation-btn center" target="_blank" id="donation-button">MAKE DONATION</a>
 
     <!-- Donation Inbox -->
-    <a href="inbox.html" class="inbox-btn center" target="_blank">
+    <a href="inbox.html" class="inbox-btn center" target="_blank" id="inbox-button">
         INBOX
-        <span class="badge">3</span>
+        <span id="numOfDonation" class="badge">
+        </span>
     </a>
 
     <!-- Tabs: Feed, Charities, Restaurants -->
     <section id="home" class="bg-light">
         <div class="container center tab">
-            <button onclick="listAllFeeds()" class="button-primary">Feed</button>
+            <button onclick="listAllMatches()" class="button-primary">Donation Match</button>
             <button onclick="listAllCharities()" class="button-primary">Charities</button>
             <button onclick="listAllRestaurants()" class="button-primary">Restaurants</button>
         </div>
