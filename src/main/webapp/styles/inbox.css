@@ -31,3 +31,19 @@ h1 {
 .decline-btn:hover {
     opacity: 1;
 }
+
+.inbox-btn {
+    background-color: white;
+    color: black;
+    padding: 16px 20px;
+    border: none;
+    border-radius: 1vh;
+    cursor: pointer;
+    opacity: 0.9;
+    left: 50%;
+    text-align: center;
+}
+
+.inbox-btn:hover {
+    opacity: 1;
+}
