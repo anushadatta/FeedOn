@@ -12,9 +12,7 @@ import com.google.appengine.api.users.UserService;
 import com.google.appengine.api.users.UserServiceFactory;
 import com.google.gson.Gson;
 import java.io.IOException;
-import java.net.URLDecoder;
 import java.util.ArrayList;
-import java.util.List;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -22,9 +20,11 @@ import javax.servlet.http.HttpServletResponse;
 
 @WebServlet("/login")
 public class LoginServlet extends HttpServlet {
+
     private static final String RESPONSE_CONTENT_TYPE = "text/html";
     private Gson gson = new Gson();
     DatastoreService datastore = DatastoreServiceFactory.getDatastoreService();
+
     /**
      * response will contain a json with different number of elements
      * depending on the user's state. If the user is

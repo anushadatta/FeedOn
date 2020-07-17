@@ -15,14 +15,14 @@ import javax.servlet.http.HttpServletResponse;
 @WebServlet("/blobstore-upload-url")
 public class BlobstoreUploadURLServlet extends HttpServlet {
 
-  private static final String JSON_CONTENT_TYPE = "application/json";
+    private static final String JSON_CONTENT_TYPE = "application/json";
 
-  @Override
-  public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
-    BlobstoreService blobstoreService = BlobstoreServiceFactory.getBlobstoreService();
-    String uploadUrl = blobstoreService.createUploadUrl("/donation-offer");
+    @Override
+    public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
+        BlobstoreService blobstoreService = BlobstoreServiceFactory.getBlobstoreService();
+        String uploadUrl = blobstoreService.createUploadUrl("/donation-offer");
 
-    response.setContentType(JSON_CONTENT_TYPE);
-    response.getWriter().println(uploadUrl);
-  }
+        response.setContentType(JSON_CONTENT_TYPE);
+      response.getWriter().println(uploadUrl);
+    }
 }

@@ -170,101 +170,7 @@ function getBlobstoreURL() {
         });
 }
 
-function listAcceptedInbox(){
-    getDonations("/inbox-accepted").then((donations) => {
-        dataElement.innerHTML = "";
-        donations.forEach((donation) => {
-            const div = document.createElement("div");
-            div.className = "card";
-
-            const header = document.createElement("h3");
-            header.textContent = `Restaurant Name : ${donation.restaurantName}`;
-
-            const category = document.createElement("p");
-            category.textContent = `Food Category : ${donation.category}`;
-
-            const quantity = document.createElement("p");
-            quantity.textContent = `Quantity : ${donation.quantity}`;
-
-            const time = document.createElement("p");
-            time.textContent = `Pick-up Time : ${donation.pickUpTime}`;
-
-            const address = document.createElement("p");
-            address.textContent = `Location : ${donation.location}`;
-
-            const instructions = document.createElement("p");
-            instructions.textContent = `Special Instructions : ${donation.specialInstructions}`;
-
-            div.appendChild(header);
-            div.appendChild(category);
-            div.appendChild(quantity);
-            div.appendChild(time);
-            div.appendChild(address);
-            div.appendChild(instructions);
-
-            // If an image is uploaded in the donation form, display it
-            if (donation.imageURL != "N.A."){
-                const imageName = document.createElement("p");
-                imageName.textContent = `Image : `;
-                var img = document.createElement("img");
-                img.src = donation.imageURL;
-                div.appendChild(imageName);
-                div.appendChild(img);
-            }
-
-            dataElement.appendChild(div);
-        });
-    });
-}
-
-function listDeclinedInbox(){
-    getDonations("/inbox-declined").then((donations) => {
-        dataElement.innerHTML = "";
-        donations.forEach((donation) => {
-            const div = document.createElement("div");
-            div.className = "card";
-
-            const header = document.createElement("h3");
-            header.textContent = `Restaurant Name : ${donation.restaurantName}`;
-
-            const category = document.createElement("p");
-            category.textContent = `Food Category : ${donation.category}`;
-
-            const quantity = document.createElement("p");
-            quantity.textContent = `Quantity : ${donation.quantity}`;
-
-            const time = document.createElement("p");
-            time.textContent = `Pick-up Time : ${donation.pickUpTime}`;
-
-            const address = document.createElement("p");
-            address.textContent = `Location : ${donation.location}`;
-
-            const instructions = document.createElement("p");
-            instructions.textContent = `Special Instructions : ${donation.specialInstructions}`;
-
-            div.appendChild(header);
-            div.appendChild(category);
-            div.appendChild(quantity);
-            div.appendChild(time);
-            div.appendChild(address);
-            div.appendChild(instructions);
-
-            // If an image is uploaded in the donation form, display it
-            if (donation.imageURL != "N.A."){
-                const imageName = document.createElement("p");
-                imageName.textContent = `Image : `;
-                var img = document.createElement("img");
-                img.src = donation.imageURL;
-                div.appendChild(imageName);
-                div.appendChild(img);
-            }
-
-            dataElement.appendChild(div);
-        });
-    });
-}
-
-// Display the information of all the donations in the Donation datastore
+// Display the information of all the unread donations in the Donation datastore
 function listUnreadInbox() {
     getDonations("/inbox-unread").then((donations) => {
         dataElement.innerHTML = "";
@@ -335,7 +241,101 @@ function listUnreadInbox() {
     });
 }
 
-// Get all entries from Donation datastore
+// Display the information of all the accepted donations in the Donation-match datastore
+function listAcceptedInbox(){
+    getDonations("/inbox-accepted").then((donations) => {
+        dataElement.innerHTML = "";
+        donations.forEach((donation) => {
+            const div = document.createElement("div");
+            div.className = "card";
+
+            const header = document.createElement("h3");
+            header.textContent = `Restaurant Name : ${donation.restaurantName}`;
+
+            const category = document.createElement("p");
+            category.textContent = `Food Category : ${donation.category}`;
+
+            const quantity = document.createElement("p");
+            quantity.textContent = `Quantity : ${donation.quantity}`;
+
+            const time = document.createElement("p");
+            time.textContent = `Pick-up Time : ${donation.pickUpTime}`;
+
+            const address = document.createElement("p");
+            address.textContent = `Location : ${donation.location}`;
+
+            const instructions = document.createElement("p");
+            instructions.textContent = `Special Instructions : ${donation.specialInstructions}`;
+
+            div.appendChild(header);
+            div.appendChild(category);
+            div.appendChild(quantity);
+            div.appendChild(time);
+            div.appendChild(address);
+            div.appendChild(instructions);
+
+            // If an image is uploaded in the donation form, display it
+            if (donation.imageURL != "N.A."){
+                const imageName = document.createElement("p");
+                imageName.textContent = `Image : `;
+                var img = document.createElement("img");
+                img.src = donation.imageURL;
+                div.appendChild(imageName);
+                div.appendChild(img);
+            }
+            dataElement.appendChild(div);
+        });
+    });
+}
+
+// Display the information of all the declined donations in the Donation datastore
+function listDeclinedInbox(){
+    getDonations("/inbox-declined").then((donations) => {
+        dataElement.innerHTML = "";
+        donations.forEach((donation) => {
+            const div = document.createElement("div");
+            div.className = "card";
+
+            const header = document.createElement("h3");
+            header.textContent = `Restaurant Name : ${donation.restaurantName}`;
+
+            const category = document.createElement("p");
+            category.textContent = `Food Category : ${donation.category}`;
+
+            const quantity = document.createElement("p");
+            quantity.textContent = `Quantity : ${donation.quantity}`;
+
+            const time = document.createElement("p");
+            time.textContent = `Pick-up Time : ${donation.pickUpTime}`;
+
+            const address = document.createElement("p");
+            address.textContent = `Location : ${donation.location}`;
+
+            const instructions = document.createElement("p");
+            instructions.textContent = `Special Instructions : ${donation.specialInstructions}`;
+
+            div.appendChild(header);
+            div.appendChild(category);
+            div.appendChild(quantity);
+            div.appendChild(time);
+            div.appendChild(address);
+            div.appendChild(instructions);
+
+            // If an image is uploaded in the donation form, display it
+            if (donation.imageURL != "N.A."){
+                const imageName = document.createElement("p");
+                imageName.textContent = `Image : `;
+                var img = document.createElement("img");
+                img.src = donation.imageURL;
+                div.appendChild(imageName);
+                div.appendChild(img);
+            }
+            dataElement.appendChild(div);
+        });
+    });
+}
+
+// Get entries from Donation datastore according to status input
 function getDonations(status) {
     return fetch(status)
         .then((response) => response.json())
@@ -350,7 +350,6 @@ function declineDonation(donation) {
     fetch('/inbox-declined', {method: 'POST', body: params});
 }
 
-// Add one donation into Donation-match datastore
 function acceptDonation(donation) {
     const params = new URLSearchParams();
     params.append('id', donation.id);
