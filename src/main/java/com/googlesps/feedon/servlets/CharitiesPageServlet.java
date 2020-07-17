@@ -1,13 +1,12 @@
-package com.google.sps.servlets;
+package com.googlesps.feedon.servlets;
 
 import com.google.appengine.api.datastore.DatastoreService;
 import com.google.appengine.api.datastore.DatastoreServiceFactory;
 import com.google.appengine.api.datastore.Entity;
 import com.google.appengine.api.datastore.PreparedQuery;
 import com.google.appengine.api.datastore.Query;
-import com.google.appengine.api.datastore.Query.SortDirection;
 import com.google.gson.Gson;
-import com.google.sps.data.Charity;
+import com.googlesps.feedon.data.Charity;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
@@ -41,21 +40,5 @@ public class CharitiesPageServlet extends HttpServlet {
 
         response.setContentType(JSON_CONTENT_TYPE);
         response.getWriter().println(gson.toJson(charities));
-    }
-
-    @Override
-    public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
-        // Get the input from the form.
-        String name = request.getParameter("name");
-        String location = request.getParameter("location");
-        String description = request.getParameter("description");
-
-        Entity charityEntity = new Entity("Charity");
-        charityEntity.setProperty("name", name);
-        charityEntity.setProperty("location", location);
-        charityEntity.setProperty("description", description);
-
-        datastore.put(charityEntity);
-        response.sendRedirect("/index.html");
     }
 }

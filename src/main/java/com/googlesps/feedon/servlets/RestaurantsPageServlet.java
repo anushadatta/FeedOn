@@ -1,4 +1,4 @@
-package com.google.sps.servlets;
+package com.googlesps.feedon.servlets;
 
 import com.google.appengine.api.datastore.DatastoreService;
 import com.google.appengine.api.datastore.DatastoreServiceFactory;
@@ -7,7 +7,7 @@ import com.google.appengine.api.datastore.PreparedQuery;
 import com.google.appengine.api.datastore.Query;
 import com.google.appengine.api.datastore.Query.SortDirection;
 import com.google.gson.Gson;
-import com.google.sps.data.Restaurant;
+import com.googlesps.feedon.data.Restaurant;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
@@ -41,21 +41,5 @@ public class RestaurantsPageServlet extends HttpServlet {
 
         response.setContentType(JSON_CONTENT_TYPE);
         response.getWriter().println(gson.toJson(restaurants));
-    }
-
-    @Override
-    public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
-        // Get the input from the form.
-        String name = request.getParameter("name");
-        String location = request.getParameter("location");
-        String description = request.getParameter("description");
-
-        Entity restaurantEntity = new Entity("Restaurant");
-        restaurantEntity.setProperty("name", name);
-        restaurantEntity.setProperty("location", location);
-        restaurantEntity.setProperty("description", description);
-
-        datastore.put(restaurantEntity);
-        response.sendRedirect("/index.html");
     }
 }
