@@ -47,7 +47,6 @@ function listAllMatches() {
                 div.appendChild(imageName);
                 div.appendChild(img);
             }
-
             dataElement.appendChild(div);
         });
     });
