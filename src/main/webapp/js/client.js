@@ -156,110 +156,119 @@ function getRestaurants() {
     return Promise.resolve(restaurants);
 }
 
-function getSignIn() {
+// Add with user's information to signin.html
+// userType is either "charity" or "restaurant"
+function addUserInfo(userEmail, userType, logoutLink) {
+  var para = document.createElement("p");
+  var message = "You are already logged in as " + userEmail + " of type " + userType;
+  para.appendChild(document.createTextNode(message));
+  document.body.appendChild(para);
+  // create the link to return to main page (that is index.html)
+  mainPageUrl = "index.html";
+  var returnToMainPageElement = createParaWithLink(
+    mainPageUrl, "click ", "here", " to return to main page");
+  document.body.appendChild(returnToMainPageElement);
+  // create the link to logout
+  var logoutElement = createParaWithLink(logoutLink, "Logout ", "here", "");
+  document.body.appendChild(logoutElement);
+}
+
+function createParaWithLink(link, startText, linkText, endText) {
+  var a = document.createElement('a');
+  a.href = link;
+  a.title = link;
+  a.appendChild(document.createTextNode(linkText));
+  var p = document.createElement('p');
+  p.appendChild(document.createTextNode(startText));
+  p.appendChild(a);
+  p.appendChild(document.createTextNode(endText));
+  return p;
+}
+
+//Populate signin.html with sign in related information
+function handleSignInPage() {
   fetch('/login').then(response => response.json()).then((loginInfo) => {
     if (loginInfo.length == 1) { // means user is not logged in
-      //var parent = document.getElementById("para");
+      // loginInfo's first element stores the login link
       var loginLink = loginInfo[0];
-      var message = "Go " + loginLink + " to sign in";
-      var para = document.createElement("p");
-      para.appendChild(document.createTextNode(message));
-      document.body.appendChild(para);
+      // redirect to Google's login page
       window.location.href = loginLink;
-    } else if (loginInfo.length ==2) {
+    } else if (loginInfo.length == 2) {
       // user has yet to register
       // direct user to a new page asking them to choose between charity and restaurant
       var registerLink = "register.html";
       window.location.href = registerLink;
     } else {
       var userEmail = loginInfo[0];
-      var userType = loginInfo[2];
-      var para = document.createElement("p");
-      var message = "You are already logged in as " + userEmail + " of type " + userType;
-      para.appendChild(document.createTextNode(message));
-      document.body.appendChild(para);
-      // create the link to return to main page
-      mainPageUrl = "index.html";
-      var a = document.createElement('a');
-      a.href = mainPageUrl;
-      a.title = mainPageUrl;
-      a.appendChild(document.createTextNode("here"));
-      var para2 = document.createElement("p");
-      para2.appendChild(document.createTextNode("Click "));
-      para2.appendChild(a);
-      para2.appendChild(document.createTextNode("to return to main page"));
-      document.body.appendChild(para2);
       var logoutLink = loginInfo[1];
-      var a2 = document.createElement('a');
-      a2.href = logoutLink;
-      a2.title = logoutLink;
-      a2.appendChild(document.createTextNode("here"));
-      var para3 = document.createElement("p");
-      para3.appendChild(document.createTextNode("Logout "));
-      para3.appendChild(a2);
-      document.body.appendChild(para3);
+      var userType = loginInfo[2];
+      addUserInfo(userEmail, userType, logoutLink);
     }
   })
-} 
+}
 
 function getRegister() {
-  console.log("at register page");
   fetch('/login').then(response => response.json()).then((loginInfo) => {
     if (loginInfo.length == 1) { // means user is not logged in
-      console.log("loginInfo.length == 1");
-      //var parent = document.getElementById("para");
       var loginLink = loginInfo[0];
       window.location.href = loginLink;
     } if (loginInfo.length == 2) {
-      console.log("loginInfo.length == 2");
       var userEmail = loginInfo[0];
       var userInfo = document.getElementById("user-info");
       var message = "You have registered as " + userEmail;
       userInfo.appendChild(document.createTextNode(message));
     } else { // three element means user already registered
-      console.log("loginInfo.length == 3");
       var signInLink = "signin.html";
       window.location.href = signInLink;
     }
   })
 }
 
-function controlButton() {
-    // remove sign in and register button if user is already signin;
-    fetch('/login').then(response => response.json()).then((loginInfo) => {
-        // loginInfo has different length base on user's state
-        // it has length of 1 if user is not logged in, 2 if user is logged
-        // in but not registered, and 3 if user is logged in and registered
-        var notLoggedIn = 1;
-        var loggedInAndRegistered = 3;
-        var inboxButton = document.getElementById("inbox-button");
-        var donateButton = document.getElementById("donation-button");
-        if (loginInfo.length == notLoggedIn) {
-            // user is not sign in
-            inboxButton.parentNode.removeChild(inboxButton);
-            donateButton.parentNode.removeChild(donateButton);
-            return;
-        }
-        var userEmail = loginInfo[0];
-        var registerButton = document.getElementById("register-button");
-        var signInButton = document.getElementById("sign-in-button");
-        //var userInfo = document.createElement("p");
-        //userInfo.appendChild(document.createTextNode(userEmail));
-        signInButton.parentNode.removeChild(signInButton);
-        //registerButton.parentNode.replaceChild(userInfo, registerButton);
-        //registerButton.innerHTML.replace(userEmail);
-        registerButton.innerHTML = userEmail;
+function removeInboxButton() {
+  var inboxButton = document.getElementById("inbox-button");
+  inboxButton.parentNode.removeChild(inboxButton);
+}
 
-        if (loginInfo.length == loggedInAndRegistered) {
-            // the user-type is known
-            const restaurantType = "restaurant";
-            const charityType = "charity";
-            console.log(loginInfo[2]);
-            if (loginInfo[2] == restaurantType) {
-                inboxButton.parentNode.removeChild(inboxButton);
-            } else if (loginInfo[2] == charityType) {
-                donateButton.parentNode.removeChild(donateButton);
-            }
-        }
-    })
+function removeDonateButton() {
+  var donateButton = document.getElementById("donation-button");
+  donateButton.parentNode.removeChild(donateButton);
+}
+
+function removeSignInButton() {
+  var signInButton = document.getElementById("sign-in-button");
+  signInButton.parentNode.removeChild(signInButton);
+}
+
+function controlButton() {
+  // remove sign in and register button if user is already signin;
+  fetch('/login').then(response => response.json()).then((loginInfo) => {
+    // loginInfo has different length base on user's state
+    // it has length of 1 if user is not logged in, 2 if user is logged
+    // in but not registered, and 3 if user is logged in and registered
+    var notLoggedIn = 1;
+    var loggedInAndRegistered = 3;
+    if (loginInfo.length == notLoggedIn) {
+      // user is not sign in
+      removeDonateButton();
+      removeInboxButton();
+      return;
+    }
+    var userEmail = loginInfo[0];
+    var registerButton = document.getElementById("register-button");
+    registerButton.innerHTML = userEmail;
+    registerButton.href = "signin.html";
+    // can i change the inner href to point to signin.html?
+    removeSignInButton();
+
+    if (loginInfo.length == loggedInAndRegistered) {
+      // the user-type is known
+      const restaurantType = "restaurant";
+      const charityType = "charity";
+      if (loginInfo[2] == restaurantType) {
+        removeInboxButton();
+      } else if (loginInfo[2] == charityType) {
+        removeDonateButton();
+      }
+    }
+  })
 }

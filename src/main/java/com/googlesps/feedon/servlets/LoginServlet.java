@@ -20,6 +20,8 @@ import javax.servlet.http.HttpServletResponse;
 
 @WebServlet("/login")
 public class LoginServlet extends HttpServlet {
+  private static final String RESPONSE_CONTENT_TYPE = "text/html";
+  private Gson gson = new Gson();
 
   /**
    * response will contain a json with different number of elements
@@ -39,8 +41,7 @@ public class LoginServlet extends HttpServlet {
    */
   @Override
   public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
-    System.out.println("get method called");
-    response.setContentType("text/html");
+    response.setContentType(RESPONSE_CONTENT_TYPE);
     ArrayList<String> result = new ArrayList<String>();
     UserService userService = UserServiceFactory.getUserService();
     if (userService.isUserLoggedIn()) {
@@ -61,7 +62,7 @@ public class LoginServlet extends HttpServlet {
       DatastoreService datastore = DatastoreServiceFactory.getDatastoreService();
       result.add(loginUrl);
     }
-    String json = new Gson().toJson(result);
+    String json = gson.toJson(result);
     response.getWriter().println(json);
   }
 
@@ -70,7 +71,6 @@ public class LoginServlet extends HttpServlet {
    */
   @Override
   public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
-    System.out.println("post method called");
     String name = request.getParameter("name-input");
     String userType = request.getParameter("user-type");
     String description = request.getParameter("description-input");
@@ -102,11 +102,9 @@ public class LoginServlet extends HttpServlet {
     PreparedQuery results = datastore.prepare(query);
     for (Entity entity: results.asIterable()) {
       String userType = (String) entity.getProperty("user-type");
-      System.out.println("userType of " + email + " = " + userType);
       return userType;
     }
     // this email address is not found in the database
-    System.out.println("userType of " + email + " not found");
     return ""; // return empty string if user is not found
   }
 
