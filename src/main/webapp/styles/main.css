@@ -1,159 +1,159 @@
 /* Navbar */
 .navbar ul {
-  list-style-type: none;
-  margin: 0;
-  padding: 0;
-  overflow: hidden;
-  background-color: #333;
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #333;
 }
 
 .navbar li {
-  float: right;
+    float: right;
 }
 
 .navbar li a {
-  display: block;
-  color: white;
-  text-align: center;
-  padding: 20px 22px;
-  text-decoration: none;
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 20px 22px;
+    text-decoration: none;
 }
 
 .navbar li a:hover {
-  background-color: #111;
+    background-color: #111;
 }
 
 .navbar-logo {
-  height: 40px;
-  width: 40px;
-  float: left;
-  margin: 10px;
+    height: 40px;
+    width: 40px;
+    float: left;
+    margin: 10px;
 }
 
 /* Header */
 .showcase::after {
-  content: "";
-  height: 450px;
-  width: 100%;
-  background-image: url("../assets/banner.jpg");
-  background-size: cover;
-  background-repeat: no-repeat;
-  background-position: top;
-  display: block;
-  transition: all 1000ms;
-  position: relative;
+    content: '';
+    height: 450px;
+    width: 100%;
+    background-image: url("../assets/banner.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: top;
+    display: block;
+    transition: all 1000ms;
+    position: relative;
 }
 
 /* Header content */
 .content {
-  position: absolute;
-  z-index: 1;
-  left: 50%;
-  margin-top: 70px;
-  margin-left: -145px;
-  width: 300px;
-  height: 350px;
-  text-align: center;
-  transition: all 1000ms;
+    position: absolute;
+    z-index: 1;
+    left: 50%;
+    margin-top: 70px;
+    margin-left: -145px;
+    width: 300px;
+    height: 350px;
+    text-align: center;
+    transition: all 1000ms;
 }
 
 .content .logo {
-  height: 320px;
-  width: 320px;
+    height: 320px;
+    width: 320px;
 }
 
 .content .title {
-  font-size: 5rem;
-  margin-top: 1rem;
-  font-weight: bold;
-  margin: 0px;
+    font-size: 5rem;
+    margin-top: 1rem;
+    font-weight: bold;
+    margin: 0px;
 }
 
 /* Tabs */
 .tab {
-  max-width: 960px;
-  margin: auto;
-  overflow: hidden;
-  padding: 0px;
+    max-width: 960px;
+    margin: auto;
+    overflow: hidden;
+    padding: 0px;
 }
 
 /* Style the buttons that are used to open the tab content */
 .tab button {
-  padding: 15px;
-  border: #b22222;
-  cursor: pointer;
-  margin-right: 30px;
-  transition: 0.3s;
+    padding: 15px;
+    border: #B22222;
+    cursor: pointer;
+    margin-right: 30px;
+    transition: 0.3s;
 }
 
 /* Change background color of buttons on hover */
 .tab button:hover {
-  background-color: #b22222;
+    background-color: #B22222;
 }
 
 /* Create an active/current tablink class */
 .tab button.active {
-  background-color: #b22222;
+    background-color: #B22222;
 }
 
 /* Donation Form Button*/
 .donation-btn {
-  background-color: #b22222;
-  color: white;
-  padding: 16px 20px;
-  border: none;
-  border-radius: 1vh;
-  cursor: pointer;
-  opacity: 0.85;
-  position: fixed;
-  bottom: 23px;
-  right: 28px;
-  width: 180px;
-  text-decoration: none;
+    background-color: #B22222;
+    color: white;
+    padding: 16px 20px;
+    border: none;
+    border-radius: 1vh;
+    cursor: pointer;
+    opacity: 0.85;
+    position: fixed;
+    bottom: 23px;
+    right: 28px;
+    width: 180px;
+    text-decoration: none;
 }
 
 /* Inbox Button */
 .inbox-btn {
-  background-color: #333;
-  color: white;
-  padding: 16px 20px;
-  border: none;
-  border-radius: 1vh;
-  cursor: pointer;
-  opacity: 0.9;
-  position: fixed;
-  bottom: 23px;
-  right: 28px;
-  width: 180px;
-  text-decoration: none;
+    background-color: #333;
+    color: white;
+    padding: 16px 20px;
+    border: none;
+    border-radius: 1vh;
+    cursor: pointer;
+    opacity: 0.9;
+    position: fixed;
+    bottom: 23px;
+    right: 28px;
+    width: 180px;
+    text-decoration: none;
 }
 
 .inbox-btn:hover {
-  opacity: 1;
+    opacity: 1;
 }
 
 .inbox-btn .badge {
-  position: absolute;
-  top: -10px;
-  right: -10px;
-  padding: 5px 10px;
-  border-radius: 50%;
-  background: #b22222;
-  color: white;
+    position: absolute;
+    top: -10px;
+    right: -10px;
+    padding: 5px 10px;
+    border-radius: 50%;
+    background: #B22222;
+    color: white;
 }
 
 /* Contact icons */
 #contact i {
-  font-size: 30px;
-  margin: 15px;
-  color: #333;
+    font-size: 30px;
+    margin: 15px;
+    color: #333;
 }
 
 /* Website Footer */
 footer {
-  padding: 2.2rem;
+    padding: 2.2rem;
 }
 
 footer p {
-  margin: 0;
+    margin: 0;
 }
