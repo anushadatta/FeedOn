@@ -14,11 +14,19 @@
 
 </head>
 
-<body class="bg-dark" onload=listInbox()>
+<body class="bg-dark">
 
     <h1 class="center">DONATION OFFERS</h1>
 
     <!-- Donation card -->
+    <div class="center">
+        <button onclick="listUnreadInbox()" class="inbox-btn">UNREAD
+            <span id="numOfUnread" class="badge">
+            </span>
+        </button>
+        <button onclick="listAcceptedInbox()" class="inbox-btn">ACCEPTED</button>
+        <button onclick="listDeclinedInbox()" class="inbox-btn">DECLINED</button>
+    </div>
     <div class="data container"></div>
 
     <hr class="center">

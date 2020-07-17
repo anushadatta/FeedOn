@@ -12,7 +12,9 @@ import com.google.appengine.api.users.UserService;
 import com.google.appengine.api.users.UserServiceFactory;
 import com.google.gson.Gson;
 import java.io.IOException;
+import java.net.URLDecoder;
 import java.util.ArrayList;
+import java.util.List;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -81,6 +83,18 @@ public class LoginServlet extends HttpServlet {
         userEntity.setProperty("email-address", userEmail);
         userEntity.setProperty("name", name);
         userEntity.setProperty("user-type", userType);
+
+        // When user is a charity, add user's email address as one property in Donation datastore
+        // userStatus is used to store users' status of all donations - unread, accepted or declined
+        if (userType.equals("charity")) {
+            Query query = new Query("Donation");
+            PreparedQuery results = datastore.prepare(query);
+            for (Entity entity : results.asIterable()) {
+                String userStatus = "status_" + userEmail.replace('@', '_');
+                entity.setProperty(userStatus, "unread");
+                datastore.put(entity);
+            }
+        }
         userEntity.setProperty("location", location);
         userEntity.setProperty("description", description);
         datastore.put(userEntity);

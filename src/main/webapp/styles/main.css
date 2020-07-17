@@ -75,13 +75,16 @@
     max-width: 960px;
     margin: auto;
     overflow: hidden;
-    padding: 0px;
+    padding: 20px;
 }
 
 /* Style the buttons that are used to open the tab content */
 .tab button {
+    background-color: #D5D4D4;
     padding: 15px;
-    border: #B22222;
+    width: 180px;
+    border: none;
+    border-radius: 1vh;
     cursor: pointer;
     margin-right: 30px;
     transition: 0.3s;
@@ -89,12 +92,12 @@
 
 /* Change background color of buttons on hover */
 .tab button:hover {
-    background-color: #B22222;
+    opacity: 1;
 }
 
 /* Create an active/current tablink class */
 .tab button.active {
-    background-color: #B22222;
+    opacity: 1;
 }
 
 /* Donation Form Button*/

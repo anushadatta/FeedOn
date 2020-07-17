@@ -1,8 +1,8 @@
 const dataElement = document.querySelector(".data");
 
 // Load the number of unread donations in the inbox as badge
-fetch('/inbox').then(response => response.json()).then((donations) => {
-        document.getElementById("numOfDonation").innerText = donations.length.toString();
+fetch('/inbox-unread').then(response => response.json()).then((donations) => {
+        document.getElementById("numOfUnread").innerText = donations.length.toString();
     });
 
 // Display the information of all matched donations after clicking on the "Donation Match" tab
@@ -28,11 +28,25 @@ function listAllMatches() {
             const address = document.createElement("p");
             address.textContent = `Location : ${match.location}`;
 
+            const instructions = document.createElement("p");
+            instructions.textContent = `Special Instructions : ${match.specialInstructions}`;
+
             div.appendChild(header);
             div.appendChild(contents);
             div.appendChild(category);
             div.appendChild(time);
             div.appendChild(address);
+            div.appendChild(instructions);
+
+            // If an image is uploaded in the donation form, display it
+            if (match.imageURL != "N.A."){
+                const imageName = document.createElement("p");
+                imageName.textContent = `Image : `;
+                var img = document.createElement("img");
+                img.src = match.imageURL;
+                div.appendChild(imageName);
+                div.appendChild(img);
+            }
 
             dataElement.appendChild(div);
         });
@@ -156,9 +170,103 @@ function getBlobstoreURL() {
         });
 }
 
+function listAcceptedInbox(){
+    getDonations("/inbox-accepted").then((donations) => {
+        dataElement.innerHTML = "";
+        donations.forEach((donation) => {
+            const div = document.createElement("div");
+            div.className = "card";
+
+            const header = document.createElement("h3");
+            header.textContent = `Restaurant Name : ${donation.restaurantName}`;
+
+            const category = document.createElement("p");
+            category.textContent = `Food Category : ${donation.category}`;
+
+            const quantity = document.createElement("p");
+            quantity.textContent = `Quantity : ${donation.quantity}`;
+
+            const time = document.createElement("p");
+            time.textContent = `Pick-up Time : ${donation.pickUpTime}`;
+
+            const address = document.createElement("p");
+            address.textContent = `Location : ${donation.location}`;
+
+            const instructions = document.createElement("p");
+            instructions.textContent = `Special Instructions : ${donation.specialInstructions}`;
+
+            div.appendChild(header);
+            div.appendChild(category);
+            div.appendChild(quantity);
+            div.appendChild(time);
+            div.appendChild(address);
+            div.appendChild(instructions);
+
+            // If an image is uploaded in the donation form, display it
+            if (donation.imageURL != "N.A."){
+                const imageName = document.createElement("p");
+                imageName.textContent = `Image : `;
+                var img = document.createElement("img");
+                img.src = donation.imageURL;
+                div.appendChild(imageName);
+                div.appendChild(img);
+            }
+
+            dataElement.appendChild(div);
+        });
+    });
+}
+
+function listDeclinedInbox(){
+    getDonations("/inbox-declined").then((donations) => {
+        dataElement.innerHTML = "";
+        donations.forEach((donation) => {
+            const div = document.createElement("div");
+            div.className = "card";
+
+            const header = document.createElement("h3");
+            header.textContent = `Restaurant Name : ${donation.restaurantName}`;
+
+            const category = document.createElement("p");
+            category.textContent = `Food Category : ${donation.category}`;
+
+            const quantity = document.createElement("p");
+            quantity.textContent = `Quantity : ${donation.quantity}`;
+
+            const time = document.createElement("p");
+            time.textContent = `Pick-up Time : ${donation.pickUpTime}`;
+
+            const address = document.createElement("p");
+            address.textContent = `Location : ${donation.location}`;
+
+            const instructions = document.createElement("p");
+            instructions.textContent = `Special Instructions : ${donation.specialInstructions}`;
+
+            div.appendChild(header);
+            div.appendChild(category);
+            div.appendChild(quantity);
+            div.appendChild(time);
+            div.appendChild(address);
+            div.appendChild(instructions);
+
+            // If an image is uploaded in the donation form, display it
+            if (donation.imageURL != "N.A."){
+                const imageName = document.createElement("p");
+                imageName.textContent = `Image : `;
+                var img = document.createElement("img");
+                img.src = donation.imageURL;
+                div.appendChild(imageName);
+                div.appendChild(img);
+            }
+
+            dataElement.appendChild(div);
+        });
+    });
+}
+
 // Display the information of all the donations in the Donation datastore
-function listInbox() {
-    getDonations().then((donations) => {
+function listUnreadInbox() {
+    getDonations("/inbox-unread").then((donations) => {
         dataElement.innerHTML = "";
         donations.forEach((donation) => {
             const div = document.createElement("div");
@@ -189,8 +297,7 @@ function listInbox() {
             acceptButtonElement.type = "submit";
             acceptButtonElement.className = "accept-btn";
             acceptButtonElement.addEventListener('click', () => {
-                deleteDonation(donation);
-                addMatch(donation);
+                acceptDonation(donation);
                 div.remove();
             });
 
@@ -200,6 +307,7 @@ function listInbox() {
             declineButtonElement.type = "button";
             declineButtonElement.className = "decline-btn";
             declineButtonElement.addEventListener('click', () => {
+                declineDonation(donation);
                 div.remove();
             });
 
@@ -228,26 +336,25 @@ function listInbox() {
 }
 
 // Get all entries from Donation datastore
-function getDonations() {
-    return fetch("/inbox")
+function getDonations(status) {
+    return fetch(status)
         .then((response) => response.json())
         .then((entries) => {
         return entries;
         });
 }
 
-// Delete one donation from Donation datastore
-function deleteDonation(donation) {
+function declineDonation(donation) {
     const params = new URLSearchParams();
     params.append('id', donation.id);
-    fetch('/delete-donation', {method: 'POST', body: params});
+    fetch('/inbox-declined', {method: 'POST', body: params});
 }
 
 // Add one donation into Donation-match datastore
-function addMatch(donation) {
+function acceptDonation(donation) {
     const params = new URLSearchParams();
     params.append('id', donation.id);
-    fetch('/add-match', {method: 'POST', body: params});
+    fetch('/inbox-accepted', {method: 'POST', body: params});
 }
 
 // Add with user's information to signin.html

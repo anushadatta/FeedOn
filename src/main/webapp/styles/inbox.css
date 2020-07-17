@@ -34,17 +34,30 @@ h1 {
 
 /* Inbox button */
 .inbox-btn {
-    background-color: white;
+    background-color: #9CCBF7;
     color: black;
-    padding: 16px 20px;
+    padding: 16px 16px;
     border: none;
     border-radius: 1vh;
     cursor: pointer;
     opacity: 0.9;
-    left: 50%;
+    width: 180px;
+    position: relative;
+    margin-right: 30px;
     text-align: center;
+    text-decoration: none;
 }
 
 .inbox-btn:hover {
-    opacity: 1;
+    opacity: 2;
+}
+
+.inbox-btn .badge {
+    position: absolute;
+    top: -10px;
+    right: -10px;
+    padding: 5px 10px;
+    border-radius: 50%;
+    background: #B22222;
+    color: white;
 }

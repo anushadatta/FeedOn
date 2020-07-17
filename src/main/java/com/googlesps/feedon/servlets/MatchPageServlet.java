@@ -22,7 +22,7 @@ public class MatchPageServlet extends HttpServlet {
     private Gson gson = new Gson();
 
     /**
-     * Get all entries in the Donation-match datastore and display them in index page
+     * Get all entries in the Donation-match datastore and display them in home page
      * @param request
      * @param response
      * @throws IOException
@@ -43,11 +43,12 @@ public class MatchPageServlet extends HttpServlet {
             String pickUpTime = (String) entity.getProperty("pickUpTime");
             String quantity = (String) entity.getProperty("quantity");
             Date timestamp = (Date) entity.getProperty("timestamp");
+            String specialInstructions = (String) entity.getProperty("specialInstructions");
+            String imageURL = (String) entity.getProperty("imageURL");
 
-            DonationMatch match = new DonationMatch(id, restaurantName, charityName, location, category, pickUpTime, quantity, timestamp);
+            DonationMatch match = new DonationMatch(id, restaurantName, charityName, location, category, pickUpTime, quantity, specialInstructions, imageURL, timestamp);
             matches.add(match);
         }
-
         response.setContentType(JSON_CONTENT_TYPE);
         response.getWriter().println(gson.toJson(matches));
     }
