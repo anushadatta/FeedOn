@@ -114,7 +114,7 @@ public class AcceptedInboxServlet extends HttpServlet {
      * If the user is not signed in, it will display an empty string.
      * Also, if the user is signed in but is yet to register the name
      * (that is the name is not within the datastore), return an empty string as well
-     * @return
+     * @return The name of the current logged-in user
      */
     private String getUserName() {
         if (!userService.isUserLoggedIn()) {
