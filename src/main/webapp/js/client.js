@@ -112,7 +112,7 @@ function getMatch() {
 }
 
 function getCharities() {
-  return fetch("/charity")
+  return fetch("/charities")
     .then((response) => response.json())
     .then((entries) => {
       return entries;
@@ -120,7 +120,7 @@ function getCharities() {
 }
 
 function getRestaurants() {
-  return fetch("/restaurant")
+  return fetch("/restaurants")
     .then((response) => response.json())
     .then((entries) => {
       return entries;
