@@ -18,10 +18,10 @@ import java.util.List;
 public class AcceptedInboxServlet extends HttpServlet {
 
     DatastoreService datastore = DatastoreServiceFactory.getDatastoreService();
-    private final String EMPTY_STRING = "";
     UserService userService = UserServiceFactory.getUserService();
-    private Gson gson = new Gson();
     private static final String JSON_CONTENT_TYPE = "application/json";
+    private final String EMPTY_STRING = "";
+    private Gson gson = new Gson();
 
     /**
      * Add matched donations into Donation-match datastore and delete it from Donation datastore
@@ -59,7 +59,7 @@ public class AcceptedInboxServlet extends HttpServlet {
         // Create Donation-match entity and update it to datastore
         Entity matchEntity = new Entity("DonationMatch");
 
-        // The type of the currently logined user should be charity. We get its user name by a helper function
+        // The type of the currently logged-in user should be charity. We get its user name by a helper function
         String charityName = getUserName();
         matchEntity.setProperty("charityName", charityName);
         Date timestamp = new Date();
@@ -76,7 +76,7 @@ public class AcceptedInboxServlet extends HttpServlet {
     }
 
     /**
-     * Display the accepted donations of the currently logined user by filtering in the Donation-match datastore
+     * Display the accepted donations of the currently logged-in user by filtering in the Donation-match datastore
      * @param request
      * @param response
      * @throws IOException
@@ -117,7 +117,6 @@ public class AcceptedInboxServlet extends HttpServlet {
      * @return
      */
     private String getUserName() {
-        UserService userService = UserServiceFactory.getUserService();
         if (!userService.isUserLoggedIn()) {
             // user is not logged in, just return an empty string as a respond
             return EMPTY_STRING;
