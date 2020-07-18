@@ -49,6 +49,8 @@ function listAllMatches() {
             }
             dataElement.appendChild(div);
         });
+      });
+    }
 
 function listAllCharities() {
   getCharities().then((charities) => {
