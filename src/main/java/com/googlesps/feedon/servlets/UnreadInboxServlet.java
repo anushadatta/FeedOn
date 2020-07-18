@@ -1,10 +1,9 @@
 package com.googlesps.feedon.servlets;
 
-import com.google.appengine.api.datastore.DatastoreServiceFactory;
-import com.google.appengine.api.datastore.Entity;
-import com.google.appengine.api.datastore.PreparedQuery;
-import com.google.appengine.api.datastore.Query;
+import com.google.appengine.api.datastore.*;
 import com.google.appengine.api.datastore.Query.SortDirection;
+import com.google.appengine.api.users.UserService;
+import com.google.appengine.api.users.UserServiceFactory;
 import com.google.gson.Gson;
 import com.googlesps.feedon.data.Donation;
 import javax.servlet.annotation.WebServlet;
@@ -16,15 +15,29 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-@WebServlet("/inbox")
-public class InboxServlet extends HttpServlet {
+@WebServlet("/inbox-unread")
+public class UnreadInboxServlet extends HttpServlet {
+
     private Gson gson = new Gson();
     private static final String JSON_CONTENT_TYPE = "application/json";
+    UserService userService = UserServiceFactory.getUserService();
+    DatastoreService datastore = DatastoreServiceFactory.getDatastoreService();
 
+    /**
+     * Get all entries marked as unread in the Donation datastore and display them in Inbox page
+     * @param request
+     * @param response
+     * @throws IOException
+     */
     @Override
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
-        Query query = new Query("Donation").addSort("timestamp", SortDirection.DESCENDING);
-        PreparedQuery results = DatastoreServiceFactory.getDatastoreService().prepare(query);
+        String email = userService.getCurrentUser().getEmail();
+        String userStatus = "status_" + email.replace('@', '_');
+
+        Query.Filter propertyFilter = new Query.FilterPredicate(userStatus, Query.FilterOperator.EQUAL, "unread");
+        Query query = new Query("Donation").setFilter(propertyFilter).addSort("timestamp", SortDirection.DESCENDING);
+
+        PreparedQuery results = datastore.prepare(query);
 
         List<Donation> donations = new ArrayList<>();
         for (Entity entity : results.asIterable()) {
@@ -41,7 +54,6 @@ public class InboxServlet extends HttpServlet {
             Donation donation = new Donation(id, restaurantName, location, category, pickUpTime, quantity, specialInstructions, imageURL, timestamp);
             donations.add(donation);
         }
-
         response.setContentType(JSON_CONTENT_TYPE);
         response.getWriter().println(gson.toJson(donations));
     }

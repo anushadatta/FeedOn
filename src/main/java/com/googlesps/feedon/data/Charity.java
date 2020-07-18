@@ -1,5 +1,8 @@
 package com.googlesps.feedon.data;
 
+/**
+ * Class for charity users
+ */
 public final class Charity {
     private final long id;
     private final String CharityName;
