@@ -70,7 +70,7 @@ public class DonationOfferServlet extends HttpServlet {
 
         // User submitted form without selecting a file, so we can't get a URL. (dev server)
         if (blobKeys == null || blobKeys.isEmpty()) {
-        return null;
+            return null;
         }
 
         // Our form only contains a single file input, so get the first index.
