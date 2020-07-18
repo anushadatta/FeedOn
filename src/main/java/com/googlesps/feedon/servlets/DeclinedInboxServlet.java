@@ -40,7 +40,6 @@ public class DeclinedInboxServlet extends HttpServlet {
         try {
             // When the required donation can found by donationID, set the donation status to "declined"
             Entity donationEntity = datastore.get(taskEntityKey);
-//            donationEntity.removeProperty(userStatus);
             donationEntity.setProperty(userStatus, "declined");
             datastore.put(donationEntity);
         } catch (EntityNotFoundException e) {
@@ -49,7 +48,7 @@ public class DeclinedInboxServlet extends HttpServlet {
     }
 
     /**
-     * Display all the declined donations of the currently logined charity on the Inbox page
+     * Display all the declined donations of the currently logged-in charity on the Inbox page
      * @param request
      * @param response
      * @throws IOException
