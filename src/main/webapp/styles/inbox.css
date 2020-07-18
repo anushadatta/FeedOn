@@ -49,7 +49,7 @@ h1 {
 }
 
 .inbox-btn:hover {
-    opacity: 2;
+    opacity: 1;
 }
 
 .inbox-btn .badge {
