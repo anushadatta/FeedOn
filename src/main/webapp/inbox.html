@@ -18,8 +18,14 @@
 
     <h1 class="center">DONATION OFFERS</h1>
 
-    <div class="container center tab">
-        <button onclick="listInbox()" class="inbox-btn">UNREAD</button>
+    <!-- Donation card -->
+    <div class="center">
+        <button onclick="listUnreadInbox()" class="inbox-btn">UNREAD
+            <span id="numOfUnread" class="badge">
+            </span>
+        </button>
+        <button onclick="listAcceptedInbox()" class="inbox-btn">ACCEPTED</button>
+        <button onclick="listDeclinedInbox()" class="inbox-btn">DECLINED</button>
     </div>
 
     <div class="data container"></div>

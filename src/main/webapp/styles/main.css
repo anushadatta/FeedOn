@@ -74,13 +74,16 @@
     max-width: 960px;
     margin: auto;
     overflow: hidden;
-    padding: 0px;
+    padding: 20px;
 }
 
 /* Style the buttons that are used to open the tab content */
 .tab button {
+    background-color: #D5D4D4;
     padding: 15px;
-    border: #B22222;
+    width: 180px;
+    border: none;
+    border-radius: 1vh;
     cursor: pointer;
     margin-right: 30px;
     transition: 0.3s;
@@ -88,12 +91,12 @@
 
 /* Change background color of buttons on hover */
 .tab button:hover {
-    background-color: #B22222;
+    opacity: 1;
 }
 
 /* Create an active/current tablink class */
 .tab button.active {
-    background-color: #B22222;
+    opacity: 1;
 }
 
 /* Donation Form Button*/
@@ -114,7 +117,7 @@
 
 /* Inbox Button */
 .inbox-btn {
-    background-color: #333;
+    background-color: #2283E4;
     color: white;
     padding: 16px 20px;
     border: none;
@@ -126,6 +129,7 @@
     right: 28px;
     width: 180px;
     text-decoration: none;
+    right: 28px;
 }
 
 .inbox-btn:hover {

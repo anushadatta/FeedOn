@@ -1,5 +1,8 @@
 package com.googlesps.feedon.data;
 
+/**
+ * Class for restaurant users
+ */
 public final class Restaurant {
     private final long id;
     private final String restaurantName;
