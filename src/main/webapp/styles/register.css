@@ -1,13 +1,8 @@
 /* Register Page styles */
 
-.h1 {
-    color: #B22222;
-    margin: 10px;
-}
-
 .form-container {
-    max-width: 1000px;
-    margin: 10px;
+    max-width: 1100px;
+    margin: 20px;
     padding: 30px;
     background-color: #f1f1f1;
 }
