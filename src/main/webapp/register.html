@@ -1,34 +1,55 @@
 <!DOCTYPE html>
 <html lang="en">
-
+    
 <head>
     <meta charset="UTF-8">
-    <title>FeedOn's Register Page</title>
-    <script src="js/client.js"></script>
+
+    <title>FeedOn - Register</title>
+
+    <!-- Favicon, CSS & JS -->
+    <link rel="icon" href="assets/logo.png" type="image/png" sizes="16x16">
+    <link rel="stylesheet" href="styles/common.css">
+    <link rel="stylesheet" href="styles/register.css">
+    <script src="js/client.js" defer></script>
+
+    <!-- Font Awesome icons CDN -->
+    <script src="https://use.fontawesome.com/4e51920be5.js"></script>
+
+    <!-- Bootstrap CDN -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+
 </head>
 
-<body onload=getRegister()>
+<body class="bg-light" onload=getRegister()>
 
-    <H1>Register page</H1>
-    <div id="user-info"></div>
-    <form action="/login" method="POST">
-        <p>Please enter your name.</p>
-        <input type="text" name="name-input" placeholder="Charity/Restaurant's name" />
-        <br /><br>
-        <p>Please register as charity or restaurant.</p>
-        <select name="user-type">
-            <option value="charity">Charity</option>
-            <option value="restaurant">Restaurant</option>
-        </select>
-        <br /><br>
-        <p>Please give a description about your charity/restaurant.</p>
-        <textarea name="description-input" placeholder="Your description"></textarea>
-        <br /><br>
-        <p>Pleace provide an address to your location.</p>
-        <textarea name="location-input" placeholder="Your location's address"></textarea>
-        <br /><br>
-        <input type="submit" value="Enter">
-    </form>
+    <section class="container">
+
+        <h1 class="center">FeedOn - REGISTRATION FORM</h1>
+
+        <div id="user-info"></div>
+
+        <form action="/login" class="form-container" method="POST">
+
+            <p><b>Please enter your organisation's name:</b></p>
+            <input type="text" name="name-input" placeholder="Enter organisation (Charity/Restaurant) name" />
+
+            <p><b>Please register as charity or restaurant:</b></p>
+            <select name="user-type">
+                <option value="" disabled selected>Select food category here</option>
+                <option value="charity">Charity</option>
+                <option value="restaurant">Restaurant</option>
+            </select>
+
+            <p><b>Please provide a description about your charity/restaurant:</b></p>
+            <textarea name="description-input" placeholder="Enter organisation description"></textarea>
+
+            <p><b>Pleace provide an address to your location:</b></p>
+            <textarea name="location-input" placeholder="Enter organisation's address"></textarea>
+
+            <input type="submit" class="register-btn" value="Register">
+        </form>
+
+    </section>
 
 </body>
 

@@ -318,12 +318,14 @@ function getDonations(status) {
 function declineDonation(donation) {
     const params = new URLSearchParams();
     params.append('id', donation.id);
+    
     fetch('/inbox-declined', {method: 'POST', body: params});
 }
 
 function acceptDonation(donation) {
     const params = new URLSearchParams();
     params.append('id', donation.id);
+    
     fetch('/inbox-accepted', {method: 'POST', body: params});
 }
 
@@ -332,13 +334,16 @@ function acceptDonation(donation) {
 function addUserInfo(userEmail, userType, logoutLink) {
     var para = document.createElement("p");
     var message = "You are already logged in as " + userEmail + " of type " + userType;
+    
     para.appendChild(document.createTextNode(message));
     document.body.appendChild(para);
+    
     // create the link to return to main page (that is index.html)
     mainPageUrl = "index.html";
     var returnToMainPageElement = createParaWithLink(
     mainPageUrl, "click ", "here", " to return to main page");
     document.body.appendChild(returnToMainPageElement);
+    
     // create the link to logout
     var logoutElement = createParaWithLink(logoutLink, "Logout ", "here", "");
     document.body.appendChild(logoutElement);
@@ -349,16 +354,19 @@ function createParaWithLink(link, startText, linkText, endText) {
     a.href = link;
     a.title = link;
     a.appendChild(document.createTextNode(linkText));
+    
     var p = document.createElement('p');
     p.appendChild(document.createTextNode(startText));
     p.appendChild(a);
     p.appendChild(document.createTextNode(endText));
+    
     return p;
 }
 
 //Populate signin.html with sign in related information
 function handleSignInPage() {
     fetch('/login').then(response => response.json()).then((loginInfo) => {
+        
         if (loginInfo.length == 1) { // means user is not logged in
             // loginInfo's first element stores the login link
             var loginLink = loginInfo[0];
@@ -373,6 +381,7 @@ function handleSignInPage() {
             var userEmail = loginInfo[0];
             var logoutLink = loginInfo[1];
             var userType = loginInfo[2];
+            
             addUserInfo(userEmail, userType, logoutLink);
         }
     })
@@ -380,10 +389,11 @@ function handleSignInPage() {
 
 function getRegister() {
     fetch('/login').then(response => response.json()).then((loginInfo) => {
+        
         if (loginInfo.length == 1) { // means user is not logged in
             var loginLink = loginInfo[0];
             window.location.href = loginLink;
-        } if (loginInfo.length == 2) {
+        } else if (loginInfo.length == 2) {
             var userEmail = loginInfo[0];
             var userInfo = document.getElementById("user-info");
             var message = "You have registered as " + userEmail;
@@ -424,10 +434,12 @@ function controlButton() {
             removeInboxButton();
             return;
         }
+        
         var userEmail = loginInfo[0];
         var registerButton = document.getElementById("register-button");
         registerButton.innerHTML = userEmail;
         registerButton.href = "signin.html";
+        
         // can i change the inner href to point to signin.html?
         removeSignInButton();
 
