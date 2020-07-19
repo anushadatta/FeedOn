@@ -426,9 +426,8 @@ function controlButton() {
         // loginInfo has different length base on user's state
         // it has length of 1 if user is not logged in, 2 if user is logged
         // in but not registered, and 3 if user is logged in and registered
-        var notLoggedIn = 1;
         var loggedInAndRegistered = 3;
-        if (loginInfo.length == notLoggedIn) {
+        if (loginInfo.length != loggedInAndRegistered) {
             // user is not sign in
             removeDonateButton();
             removeInboxButton();
