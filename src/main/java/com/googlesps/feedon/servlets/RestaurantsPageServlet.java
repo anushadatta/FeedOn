@@ -5,6 +5,9 @@ import com.google.appengine.api.datastore.DatastoreServiceFactory;
 import com.google.appengine.api.datastore.Entity;
 import com.google.appengine.api.datastore.PreparedQuery;
 import com.google.appengine.api.datastore.Query;
+import com.google.appengine.api.datastore.Query.Filter;
+import com.google.appengine.api.datastore.Query.FilterOperator;
+import com.google.appengine.api.datastore.Query.FilterPredicate;
 import com.google.appengine.api.datastore.Query.SortDirection;
 import com.google.gson.Gson;
 import com.googlesps.feedon.data.Restaurant;
@@ -25,7 +28,8 @@ public class RestaurantsPageServlet extends HttpServlet {
 
     @Override
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
-        Query queryRestaurant = new Query("Restaurant");
+        Filter propertyFilter = new FilterPredicate("user-type", FilterOperator.EQUAL, "restaurant");
+        Query queryRestaurant = new Query("user").setFilter(propertyFilter);
         PreparedQuery restaurantResults = DatastoreServiceFactory.getDatastoreService().prepare(queryRestaurant);
 
         List<Restaurant> restaurants = new ArrayList<>();
