@@ -1,6 +1,14 @@
 package com.googlesps.feedon.servlets;
 
 import com.google.appengine.api.datastore.*;
+import com.google.appengine.api.datastore.DatastoreService;
+import com.google.appengine.api.datastore.DatastoreServiceFactory;
+import com.google.appengine.api.datastore.Entity;
+import com.google.appengine.api.datastore.PreparedQuery;
+import com.google.appengine.api.datastore.Query;
+import com.google.appengine.api.datastore.Query.Filter;
+import com.google.appengine.api.datastore.Query.FilterOperator;
+import com.google.appengine.api.datastore.Query.FilterPredicate;
 import com.google.appengine.api.users.UserService;
 import com.google.appengine.api.users.UserServiceFactory;
 import com.google.gson.Gson;
@@ -59,8 +67,8 @@ public class DeclinedInboxServlet extends HttpServlet {
         String email = userService.getCurrentUser().getEmail();
         String userStatus = "status_" + email.replace('@', '_');
 
-        Query.Filter propertyFilter = new Query.FilterPredicate(userStatus, Query.FilterOperator.EQUAL, "declined");
-        Query query = new Query("Donation").setFilter(propertyFilter).addSort("timestamp", Query.SortDirection.DESCENDING);
+        Filter propertyFilter = new FilterPredicate(userStatus, FilterOperator.EQUAL, "declined");
+        Query query = new Query("Donation").setFilter(propertyFilter);
 
         PreparedQuery results = datastore.prepare(query);
 
