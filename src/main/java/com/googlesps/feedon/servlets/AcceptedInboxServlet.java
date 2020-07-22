@@ -87,7 +87,7 @@ public class AcceptedInboxServlet extends HttpServlet {
         // Filter in the Donation-match datastore to get the current charity's name
         String charityName = getUserName();
         Query.Filter propertyFilter = new Query.FilterPredicate("charityName", Query.FilterOperator.EQUAL, charityName);
-        Query query = new Query("DonationMatch").setFilter(propertyFilter).addSort("timestamp", Query.SortDirection.DESCENDING);
+        Query query = new Query("DonationMatch").setFilter(propertyFilter);
         PreparedQuery results = datastore.prepare(query);
 
         List<DonationMatch> matches = new ArrayList<>();
