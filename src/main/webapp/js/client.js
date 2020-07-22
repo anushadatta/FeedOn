@@ -396,7 +396,7 @@ function getRegister() {
         } else if (loginInfo.length == 2) {
             var userEmail = loginInfo[0];
             var userInfo = document.getElementById("user-info");
-            var message = "You have registered as " + userEmail;
+            var message = "Account being used for registration: " + userEmail;
             userInfo.appendChild(document.createTextNode(message));
         } else { // three element means user already registered
             var signInLink = "signin.html";
