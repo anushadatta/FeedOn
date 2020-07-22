@@ -14,13 +14,18 @@ import com.google.appengine.api.blobstore.BlobInfoFactory;
 import com.google.appengine.api.blobstore.BlobKey;
 import com.google.appengine.api.blobstore.BlobstoreService;
 import com.google.appengine.api.blobstore.BlobstoreServiceFactory;
-import com.google.appengine.api.images.ImagesService;
-import com.google.appengine.api.images.ImagesServiceFactory;
-import com.google.appengine.api.images.ServingUrlOptions;
 import com.google.appengine.api.datastore.DatastoreService;
 import com.google.appengine.api.datastore.DatastoreServiceFactory;
 import com.google.appengine.api.datastore.Entity;
+import com.google.appengine.api.images.ImagesService;
+import com.google.appengine.api.images.ImagesServiceFactory;
+import com.google.appengine.api.images.ServingUrlOptions;
 import com.google.gson.Gson;
+import com.google.appengine.api.datastore.PreparedQuery;
+import com.google.appengine.api.datastore.Query;
+import com.google.appengine.api.datastore.Query.Filter;
+import com.google.appengine.api.datastore.Query.FilterOperator;
+import com.google.appengine.api.datastore.Query.FilterPredicate;
 
 @WebServlet("/donation-offer")
 public class DonationOfferServlet extends HttpServlet {
@@ -54,6 +59,17 @@ public class DonationOfferServlet extends HttpServlet {
         donationOfferEntity.setProperty("specialInstructions", specialInstructions);
         donationOfferEntity.setProperty("imageURL", imageURL);
         donationOfferEntity.setProperty("timestamp", timestamp);
+
+        // Set the donation status for every charity to be "unread"
+        Filter propertyFilter = new FilterPredicate("user-type", FilterOperator.EQUAL, "charity");
+        Query queryCharity = new Query("user").setFilter(propertyFilter);
+        PreparedQuery charityResults = datastore.prepare(queryCharity);
+
+        for (Entity entity : charityResults.asIterable()) {
+            String email = (String) entity.getProperty("email-address");
+            String userStatus = "status_" + email.replace('@', '_');
+            donationOfferEntity.setProperty(userStatus, "unread");
+        }
 
         // Upload donation offer to Datastore 
         datastore.put(donationOfferEntity);
